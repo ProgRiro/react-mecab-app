@@ -7,8 +7,15 @@ import SimpleBarChart from "../home/SimpleBarChart.js";
 import DraggableList from "../home/DraggableList.js";
 import logo from "../../Assets/undraw_personal_goals_edgd.svg";
 
-const MECAB_ENDPOINT =
-  "https://asia-northeast1-mecab-app.cloudfunctions.net/api/v1/";
+// axios.defaults.baseURL = "https://mecab-app.web.app";
+// axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
+// axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+
+// const MECAB_ENDPOINT =
+//   "https://asia-northeast1-mecab-app.cloudfunctions.net/getMecab/api/v1/";
+const MECAB_ENDPOINT = "http://localhost:5000/api/v1/";
+
+// "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
 
 type numDataTypes = {
   name: string;
@@ -30,7 +37,9 @@ const Home: React.FC = () => {
   const numDataFetch = async () => {
     if (value === "") return;
     await axios
-      .post(`${MECAB_ENDPOINT}mecab/num`, { data: value })
+      .post(`${MECAB_ENDPOINT}mecab/num`, {
+        data: value,
+      })
       .then((res) => {
         setNumData(res.data);
       })
@@ -42,7 +51,9 @@ const Home: React.FC = () => {
   const wordDataFetch = async () => {
     if (value === "") return;
     await axios
-      .post(`${MECAB_ENDPOINT}mecab/word`, { data: value })
+      .post(`${MECAB_ENDPOINT}mecab/word`, {
+        data: value,
+      })
       .then((res) => {
         setWordData(res.data);
       })
@@ -56,10 +67,10 @@ const Home: React.FC = () => {
       });
   };
 
-  const handleClick = async () => {
+  const handleClick = () => {
     setIsLoading(true);
-    await numDataFetch();
-    await wordDataFetch();
+    numDataFetch();
+    wordDataFetch();
     setIsLoading(false);
   };
 
