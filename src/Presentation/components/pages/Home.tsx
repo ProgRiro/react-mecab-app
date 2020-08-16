@@ -7,7 +7,8 @@ import SimpleBarChart from "../home/SimpleBarChart.js";
 import DraggableList from "../home/DraggableList.js";
 import logo from "../../Assets/undraw_personal_goals_edgd.svg";
 
-const MECAB_ENDPOINT = "http://localhost:5000/api/v1/";
+const MECAB_ENDPOINT =
+  "https://asia-northeast1-mecab-app.cloudfunctions.net/api/v1/";
 
 type numDataTypes = {
   name: string;

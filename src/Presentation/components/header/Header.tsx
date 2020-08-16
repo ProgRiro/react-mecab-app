@@ -5,6 +5,7 @@ type ShareConfigType = {
   shareTitle: string;
   shareText: string;
   tag: string;
+  uri: string;
   // size: number
 };
 
@@ -13,6 +14,7 @@ const config: ShareConfigType = {
   shareText:
     "mecab-asyncを用いた形態素解析アプリ%0aどんな品詞が、どれくらいの割合で含まれているのかを分析します%0aあなたの文章の癖がわかるかも？",
   tag: "形態素解析ったー",
+  uri: "https://mecab-app.surge.sh",
 };
 
 const Header: React.FC = ({ children }) => {
@@ -35,7 +37,7 @@ const Header: React.FC = ({ children }) => {
       <Box>
         <Button bg="transparent" border="1px" fontSize={14}>
           <Link
-            href={`http://twitter.com/share?text=${config.shareTitle}%0a%0a${config.shareText}%0a%0a%23${config.tag}%0ahttps://gooood-unlimited.web.app`}
+            href={`http://twitter.com/share?text=${config.shareTitle}%0a%0a${config.shareText}%0a%0a%23${config.tag}%0a${config.uri}`}
             style={{ textDecoration: "none" }}
             isExternal
           >
